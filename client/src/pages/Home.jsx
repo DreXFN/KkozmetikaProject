@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import logo from '../assets/logo.jpg';
 import './Home.css';
 
 function Home() {
