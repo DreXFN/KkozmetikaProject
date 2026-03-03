@@ -5,9 +5,16 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import './App.css';
-
+ import Auth from './pages/Auth';
+ import Profile from './pages/Profile';
+ import { Navigate } from 'react-router-dom';
 function App() {
-  const [theme, setTheme] = useState('light');
+  const [user, setUser] = useState(
+  JSON.parse(localStorage.getItem('user')) || null
+    );
+  const [theme, setTheme] = useState(
+  localStorage.getItem('theme') || 'light'
+    );
 
   // Apply theme to the whole page
   useEffect(() => {
@@ -15,9 +22,17 @@ function App() {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+    setTheme(prev => {
+    const newTheme = prev === 'light' ? 'dark' : 'light';
+    localStorage.setItem('theme', newTheme);
+    return newTheme;
+  });
+  <Navbar theme={theme} toggleTheme={toggleTheme} user={user} />
   };
-
+  function ProtectedRoute({ children }) {
+    const token = localStorage.getItem('token');
+    return token ? children : <Navigate to="/login" />;
+  }
   return (
     <BrowserRouter>
       <Navbar theme={theme} toggleTheme={toggleTheme} />
@@ -25,11 +40,19 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services />} />
+         
+         <Route path="/login"   element={<Auth />} />
+        <Route path="/profile" element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        } />
         </Routes>
       </div>
        <Footer />
     </BrowserRouter>
   );
+
 }
 
 export default App;

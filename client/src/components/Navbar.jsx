@@ -6,9 +6,10 @@ import sunIcon from '../assets/light_mode.png';
 import moonIcon from '../assets/dark_mode.png';
 
 
+
 function Navbar({ theme, toggleTheme }) {
    const [menuOpen, setMenuOpen] = useState(false);
-
+   const user = JSON.parse(localStorage.getItem('user'));
   return (
     
     <nav className="navbar">
@@ -30,7 +31,9 @@ function Navbar({ theme, toggleTheme }) {
         <Link to="/">Főoldal</Link>
         <Link to="/services">Szolgáltatások</Link>
         <Link to="/booking">Időpontfoglalás</Link>
-        <Link to="/profile">Profilom</Link>
+        <Link to={user ? '/profile' : '/login'}>
+  {       user ? user.first_name : 'Profilom'}
+        </Link>
       </div>
 
       <div className="navbar-right">
@@ -42,7 +45,9 @@ function Navbar({ theme, toggleTheme }) {
             <Link to="/"        onClick={() => setMenuOpen(false)}>Főoldal</Link>
             <Link to="/services" onClick={() => setMenuOpen(false)}>Szolgáltatások</Link>
             <Link to="/booking"  onClick={() => setMenuOpen(false)}>Időpontfoglalás</Link>
-            <Link to="/profile"  onClick={() => setMenuOpen(false)}>Profilom</Link>
+            <Link to={user ? '/profile' : '/login'} onClick={() => setMenuOpen(false)}>
+                {user ? user.first_name : 'Profilom'}
+            </Link>
           </div>
            {menuOpen && (
         <div

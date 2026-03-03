@@ -2,12 +2,13 @@
 * {
   -webkit-tap-highlight-color: transparent;
 }
+
 #root{
   width: 100%;
 }
 :root, [data-theme="light"] {
   --bg:           white;
-  --text:          white;
+  --text:          black;
   --muted:        white;
   --accent:       rgb(197, 108, 145);
   --card-bg:      rgba(53, 7, 75, 0.85);
@@ -41,5 +42,5 @@ body {
 }
 
 .page-content {
-  padding-top: 0px; /* offset for fixed navbar */
+  padding-top: 10px; /* offset for fixed navbar */
 }

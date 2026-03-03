@@ -1,3 +1,4 @@
+
 .services-page {
   width: 100%;
   max-width: 1100px;
@@ -12,18 +13,17 @@
 /* Hero */
 .services-hero {
   text-align: center;
-  padding: 3rem 1rem 2.5rem;
+  padding: 0rem 1rem 2.5rem;
     width: 100%;
 }
 
 .services-hero h1 {
-    
+    color: var(--text);
     
   font-size: clamp(2rem, 5vw, 3.5rem);
   
  
   font-weight: 800;
-  color: rgba(53, 7, 75, 0.85);
   margin-bottom: 0.5rem;
   letter-spacing: -0.02em;
 }
@@ -108,7 +108,7 @@
 .service-info h2 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--text);
+  color: white;
   margin: 0;
 }
 
