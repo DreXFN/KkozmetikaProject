@@ -7,17 +7,7 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    axios.get('http://localhost:5000/api/services')
-      .then(res => {
-        setServices(res.data);
-        setLoading(false);
-      })
-      .catch(err => {
-        setError('Could not load services');
-        setLoading(false);
-      });
-  }, []);
+
 
   return (
     

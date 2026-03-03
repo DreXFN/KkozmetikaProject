@@ -42,7 +42,7 @@
   text-decoration: none;
   font-size: 0.92rem;
   font-weight: 500;
-  color: var(--text);
+  color: white;
   letter-spacing: 0.02em;
   transition: color 0.2s;
   position: relative;

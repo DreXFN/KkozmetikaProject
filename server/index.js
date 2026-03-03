@@ -6,7 +6,7 @@ const pool = require('./db');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: 'http://192.168.1.4:5173' }));
 app.use(express.json());
 
 // Health check

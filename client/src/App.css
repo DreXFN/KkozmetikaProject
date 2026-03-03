@@ -2,10 +2,13 @@
 * {
   -webkit-tap-highlight-color: transparent;
 }
+#root{
+  width: 100%;
+}
 :root, [data-theme="light"] {
   --bg:           white;
   --text:          white;
-  --muted:        #9e7d62;
+  --muted:        white;
   --accent:       rgb(197, 108, 145);
   --card-bg:      rgba(53, 7, 75, 0.85);
   --card-border:  #e0cdb8;
@@ -19,7 +22,7 @@
 [data-theme="dark"] {
   --bg:           black;
   --text:         #f0e6d8;
-  --muted:        #a08060;
+  --muted:        white;
   --accent:      rgb(197, 108, 145);
   --card-bg:      rgba(34, 3, 32, 0.87);
   --card-border:  #3d2b1a;
@@ -34,8 +37,9 @@ body {
   color: var(--text);
   transition: background 0.3s, color 0.3s;
   margin: 0;
+    padding: 0;
 }
 
 .page-content {
-  padding-top: 64px; /* offset for fixed navbar */
+  padding-top: 0px; /* offset for fixed navbar */
 }

@@ -21,7 +21,9 @@ function Navbar({ theme, toggleTheme }) {
             <span></span>
             <span></span>
           </button>
-        <img src={logo} alt="logo" className="navbar-logo" />
+         <Link to="/">
+              <img src={logo} alt="logo" className="navbar-logo" />
+        </Link>
       </div>
 
       <div className="navbar-links">
