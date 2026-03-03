@@ -38,7 +38,7 @@ function Home() {
         }}>
           <h3>{service.name}</h3>
           <p>{service.description}</p>
-         <p><strong>{parseFloat(service.price).toLocaleString('hu-HU')}Ft</strong> · {service.duration_min} perc</p>
+         <p><strong>{parseFloat(service.price).toLocaleString('hu-HU')} Ft</strong> · {service.duration_min} perc</p>
         </div>
       ))}
     </div>
