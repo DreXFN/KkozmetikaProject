@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import './App.css';
@@ -26,6 +27,7 @@ function App() {
           <Route path="/services" element={<Services />} />
         </Routes>
       </div>
+       <Footer />
     </BrowserRouter>
   );
 }
