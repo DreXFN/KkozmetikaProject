@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import logo from '../assets/logo.jpg';
+import './Home.css';
 
 function Home() {
   const [services, setServices] = useState([]);
@@ -19,13 +21,17 @@ function Home() {
   }, []);
 
   return (
+    
     <div style={{ fontFamily: 'sans-serif', padding: '2rem' }}>
-      <h1>Kkozmetika</h1>
-      <p></p>
+      
+      <title>Főoldal</title>
+      
+      <h1></h1>
+      {/* <p></p>
 
       <h2>Szolgáltatások</h2>
 
-      {loading && <p>Loading...</p>}
+      {loading && <p>Betöltés...</p>}
       {error   && <p style={{ color: 'red' }}>{error}</p>}
 
       {services.map(service => (
@@ -40,7 +46,7 @@ function Home() {
           <p>{service.description}</p>
          <p><strong>{parseFloat(service.price).toLocaleString('hu-HU')} Ft</strong> · {service.duration_min} perc</p>
         </div>
-      ))}
+      ))} */}
     </div>
   );
 }
