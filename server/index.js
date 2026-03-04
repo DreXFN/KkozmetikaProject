@@ -208,6 +208,143 @@ app.delete('/api/dogs/:id', authMiddleware, async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+// Get booked slots for a specific date
+app.get('/api/appointments/slots', async (req, res) => {
+  const { date, duration = 30 } = req.query;
+  try {
+    const result = await pool.query(
+      `SELECT 
+        to_char(scheduled_at AT TIME ZONE 'Europe/Budapest', 'HH24:MI') as time,
+        s.duration_min
+       FROM appointments a
+       JOIN services s ON a.service_id = s.id
+       WHERE DATE(scheduled_at AT TIME ZONE 'Europe/Budapest') = $1 
+       AND a.status IN ('függőben', 'jóváhagyva')`,
+      [date]
+    );
+
+    const blockedSlots = new Set();
+
+    result.rows.forEach(({ time, duration_min }) => {
+      const [hours, minutes] = time.split(':').map(Number);
+      const startMinutes = hours * 60 + minutes;
+
+      // Block slots occupied by this appointment
+      const slotsBlocked = Math.ceil(duration_min / 30);
+      for (let i = 0; i < slotsBlocked; i++) {
+        const blockedMinutes = startMinutes + (i * 30);
+        const h = String(Math.floor(blockedMinutes / 60)).padStart(2, '0');
+        const m = String(blockedMinutes % 60).padStart(2, '0');
+        blockedSlots.add(`${h}:${m}`);
+      }
+
+      // Block slots that would overlap INTO this appointment
+      const newDurationSlots = Math.ceil(parseInt(duration) / 30);
+      for (let i = 1; i < newDurationSlots; i++) {
+        const blockedMinutes = startMinutes - (i * 30);
+        if (blockedMinutes >= 0) {
+          const h = String(Math.floor(blockedMinutes / 60)).padStart(2, '0');
+          const m = String(blockedMinutes % 60).padStart(2, '0');
+          blockedSlots.add(`${h}:${m}`);
+        }
+      }
+    });
+
+    res.json([...blockedSlots]);
+  } catch (err) {
+    console.log('Slots error:', err.message);
+    res.status(500).json({ error: err.message });
+  }
+});
+// Create appointment
+app.post('/api/appointments', authMiddleware, async (req, res) => {
+  const { dog_id, service_id, scheduled_at, customer_notes } = req.body;
+  try {
+    // Get duration of the service being booked
+    const service = await pool.query('SELECT price, duration_min FROM services WHERE id = $1', [service_id]);
+    const duration = service.rows[0].duration_min;
+
+    // Check if any existing appointment overlaps with the new one
+    const conflict = await pool.query(
+      `SELECT a.id FROM appointments a
+       JOIN services s ON a.service_id = s.id
+       WHERE a.status IN ('függőben', 'jóváhagyva')
+       AND (
+         -- New appointment starts during an existing one
+         ($1::timestamptz >= a.scheduled_at AND $1::timestamptz < a.scheduled_at + (s.duration_min || ' minutes')::interval)
+         OR
+         -- Existing appointment starts during the new one
+         (a.scheduled_at >= $1::timestamptz AND a.scheduled_at < $1::timestamptz + ($2 || ' minutes')::interval)
+       )`,
+      [scheduled_at, duration]
+    );
+
+    if (conflict.rows.length > 0) {
+      return res.status(400).json({ error: 'This time slot is already booked.' });
+    }
+
+    const result = await pool.query(
+      `INSERT INTO appointments (user_id, dog_id, service_id, scheduled_at, customer_notes, price_charged, status)
+       VALUES ($1,$2,$3,$4,$5,$6,'függőben') RETURNING *`,
+      [req.user.id, dog_id, service_id, scheduled_at, customer_notes || null, service.rows[0].price]
+    );
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.log('Appointment error:', err.message);
+    res.status(500).json({ error: err.message });
+  }
+});
+app.get('/api/appointments/booked-dates', async (req, res) => {
+  try {
+    const result = await pool.query(
+      `SELECT DATE(scheduled_at AT TIME ZONE 'Europe/Budapest') as date, COUNT(*) as count
+       FROM appointments
+       WHERE status IN ('függőben', 'jóváhagyva')
+       AND scheduled_at >= NOW()
+       GROUP BY DATE(scheduled_at AT TIME ZONE 'Europe/Budapest')`
+    );
+    const fullyBooked = result.rows
+      .filter(r => parseInt(r.count) >= 16)
+      .map(r => r.date.toISOString().split('T')[0]);
+    res.json(fullyBooked);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+app.get('/api/appointments', authMiddleware, async (req, res) => {
+  console.log('Fetching appointments for user:', req.user.id); // ← add
+  try {
+    const result = await pool.query(
+      `SELECT a.*, s.name as service_name, s.duration_min,
+              d.name as dog_name, d.breed
+       FROM appointments a
+       JOIN services s ON a.service_id = s.id
+       JOIN dogs d ON a.dog_id = d.id
+       WHERE a.user_id = $1
+       ORDER BY a.scheduled_at DESC`,
+      [req.user.id]
+    );
+    console.log('Found appointments:', result.rows.length); // ← add
+    res.json(result.rows);
+  } catch (err) {
+    console.log('Appointments error:', err.message); // ← add
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Cancel appointment
+app.put('/api/appointments/:id/cancel', authMiddleware, async (req, res) => {
+  try {
+    await pool.query(
+      `UPDATE appointments SET status = 'visszamodva'
+       WHERE id = $1 AND user_id = $2`,
+      [req.params.id, req.user.id]
+    );
+    res.json({ message: 'Appointment cancelled.' });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

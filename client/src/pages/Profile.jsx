@@ -9,7 +9,7 @@ function Profile() {
   const navigate = useNavigate();
   
   const token = localStorage.getItem('token');
-
+  const getToken = () => localStorage.getItem('token');
 
   const [user, setUser]           = useState(null);
   const [loading, setLoading]     = useState(true);
@@ -45,6 +45,8 @@ function Profile() {
     weight_kg: '', allergies: '', medical_notes: '', behaviour_notes: ''
   };
   const [dogForm, setDogForm] = useState(emptyDog);
+  const [appointments, setAppointments]           = useState([]);
+  const [appointmentsLoading, setAppointmentsLoading] = useState(false);
   
   // Redirect to login if not logged in
   useEffect(() => {
@@ -70,9 +72,11 @@ function Profile() {
         navigate('/login');
       });
   }, []);
-   useEffect(() => {
-    if (activeTab === 'dogs') fetchDogs();
-  }, [activeTab]);
+useEffect(() => {
+  console.log('Tab changed to:', activeTab); // ← add
+  if (activeTab === 'dogs')         fetchDogs();
+  if (activeTab === 'appointments') fetchAppointments();
+}, [activeTab]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -209,6 +213,38 @@ function Profile() {
     }
     setSaving(false);
   };
+const fetchAppointments = async () => {
+  setAppointmentsLoading(true);
+  const t = getToken();
+  console.log('=== fetchAppointments called ===');
+  console.log('Token:', t);
+  try {
+    const res = await axios.get(`${API_URL}/api/appointments`, {
+      headers: { Authorization: `Bearer ${t}` }
+    });
+    console.log('Appointments data:', res.data);
+    setAppointments(res.data);
+  } catch (err) {
+    console.log('Error status:', err.response?.status);
+    console.log('Error data:', err.response?.data);
+    showMessage('Could not load appointments.', true);
+  }
+  setAppointmentsLoading(false);
+};
+
+
+    const cancelAppointment = async (id) => {
+      if (!window.confirm('Cancel this appointment?')) return;
+      try {
+        await axios.put(`${API_URL}/api/appointments/${id}/cancel`, {}, {
+          headers: { Authorization: `Bearer ${getToken()}` }
+        });
+        showMessage('Appointment cancelled.');
+        fetchAppointments();
+      } catch (err) {
+        showMessage('Failed to cancel.', true);
+      }
+    };
 
   const deleteDog = async (id) => {
     if (!window.confirm('Remove this dog from your profile?')) return;
@@ -251,6 +287,12 @@ function Profile() {
            <button className={activeTab === 'dogs'     ? 'active' : ''} onClick={() => changeTab('dogs')}>
             🐕 Kutyusaim
           </button>
+          <button
+          className={activeTab === 'appointments' ? 'active' : ''}
+          onClick={() => changeTab('appointments')}
+        >
+          📅 Időpontjaim
+        </button>
           <button
             className={activeTab === 'password' ? 'active' : ''}
             onClick={() => changeTab('password')}
@@ -345,6 +387,76 @@ function Profile() {
             </div>
           </div>
         )}
+        {activeTab === 'appointments' && (
+  <div className="profile-section">
+    <h2>Időpontjaim</h2>
+    <p className="section-sub">A közelgő és korábbi időpontjaim</p>
+
+    {appointmentsLoading && (
+      <div className="profile-loading"><div className="spinner"></div></div>
+    )}
+
+    {!appointmentsLoading && appointments.length === 0 && (
+      <div className="dogs-empty">
+        <span>📅</span>
+        <p>Még nincs időpontod. <span style={{color:'var(--accent)', cursor:'pointer'}} onClick={() => navigate('/booking')}>Foglalj most!</span></p>
+      </div>
+    )}
+
+    <div className="appointments-list">
+      {appointments.map(appt => {
+        const date     = new Date(appt.scheduled_at);
+        const isPast   = date < new Date();
+        const statusColors = {
+          fuggőben:   { bg: '#fdf3e0', color: '#c9973a' },
+          jóváhagyva: { bg: '#e8f5e9', color: '#2e7d32' },
+          kész: { bg: '#e8f2f8', color: '#2d6a8f' },
+          visszamondva: { bg: '#fce8e8', color: '#c0392b' },
+          
+        };
+        const s = statusColors[appt.status] || statusColors.fuggőben;
+
+        return (
+          <div key={appt.id} className={`appt-card ${isPast ? 'appt-past' : ''}`}>
+            <div className="appt-left">
+              <div className="appt-date">
+                <span className="appt-day">
+                  {date.toLocaleDateString('hu-HU', { month: 'short', day: 'numeric' })}
+                </span>
+                <span className="appt-time">
+                  {date.toLocaleTimeString('hu-HU', { hour: '2-digit', minute: '2-digit' })}
+                </span>
+              </div>
+            </div>
+
+            <div className="appt-info">
+              <div className="appt-service">{appt.service_name}</div>
+              <div className="appt-dog">🐕 {appt.dog_name} {appt.breed ? `· ${appt.breed}` : ''}</div>
+              <div className="appt-meta">{appt.duration_min} perc · {parseInt(appt.price_charged).toLocaleString('hu-HU')} Ft</div>
+              {appt.customer_notes && (
+                <div className="appt-notes">📝 {appt.customer_notes}</div>
+              )}
+            </div>
+
+            <div className="appt-right">
+              <span className="appt-status" style={{ background: s.bg, color: s.color }}>
+                {appt.status}
+              </span>
+              {!isPast && appt.status !== 'visszamondott' && (
+                <button
+                  className="appt-cancel-btn"
+                  onClick={() => cancelAppointment(appt.id)}
+                >
+                  Lemondás
+                </button>
+              )}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+)}
         {activeTab === 'dogs' && (
           <div className="profile-section">
             <div className="dogs-header">

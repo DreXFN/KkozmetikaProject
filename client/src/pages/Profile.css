@@ -519,6 +519,130 @@
 }
 
 .dog-delete-btn:hover { background: #c0392b; color: white; }
+/* Appointments */
+.appointments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.appt-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  transition: box-shadow 0.2s;
+}
+
+.appt-card:hover { box-shadow: 0 4px 16px rgba(201,151,58,0.1); }
+.appt-past { opacity: 0.6; }
+
+.appt-left {
+  flex-shrink: 0;
+}
+
+.appt-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--toggle-bg);
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  min-width: 56px;
+  text-align: center;
+}
+
+.appt-day {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--accent);
+}
+
+.appt-time {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.appt-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.appt-service {
+  color: white;
+  font-weight: 700;
+  font-size: 0.95rem;
+  
+}
+
+.appt-dog {
+  font-size: 0.83rem;
+  color: var(--muted);
+}
+
+.appt-meta {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.appt-notes {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 0.2rem;
+}
+
+.appt-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.appt-status {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.appt-cancel-btn {
+  padding: 0.35rem 0.9rem;
+  background: transparent;
+  border: 1px solid #c0392b;
+  color: #c0392b;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.appt-cancel-btn:hover { background: #c0392b; color: white; }
+
+@media (max-width: 600px) {
+  .appt-card {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .appt-right {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
 
 /* Mobile */
 @media (max-width: 600px) {
