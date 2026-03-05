@@ -26,7 +26,7 @@ function Contact() {
             <div className="info-icon">📞</div>
             <div>
               <h3>Telefon</h3>
-              <a href="tel:+36301234567">+36 30 123 4567</a>
+              <a href="tel:+36307235630">+36 30 723 5630</a>
             </div>
           </div>
 
@@ -56,8 +56,8 @@ function Contact() {
             <div>
               <h3>Kövess minket</h3>
               <div className="social-links">
-                <a href="https://facebook.com" target="_blank" rel="noreferrer">Facebook</a>
-                <a href="https://instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+                <a href="https://www.facebook.com/vecseskutyakozmetika" target="_blank" rel="noreferrer">Facebook</a>
+                <a href="https://www.instagram.com/kutyakozmetika_vecses/" target="_blank" rel="noreferrer">Instagram</a>
                 <a href="https://tiktok.com" target="_blank" rel="noreferrer">TikTok</a>
               </div>
             </div>
