@@ -3,6 +3,7 @@ import axios from 'axios';
 import API_URL from '../api.js';
 import './Auth.css';
 
+
 function Auth() {
   const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -69,8 +70,12 @@ function Auth() {
   };
 
   return (
+    
     <div className="auth-page">
+
       <div className="auth-card">
+        
+
 
         {/* Toggle */}
         <div className="auth-toggle">

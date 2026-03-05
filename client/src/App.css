@@ -9,7 +9,7 @@
 :root, [data-theme="light"] {
   --bg:           white;
   --text:          black;
-  --muted:        white;
+  --muted:        rgb(173, 130, 173);
   --accent:       rgb(197, 108, 145);
   --card-bg:      rgba(53, 7, 75, 0.85);
   --card-border:  #e0cdb8;

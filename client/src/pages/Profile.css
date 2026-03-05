@@ -45,6 +45,9 @@
   position: sticky;
   top: 80px;
 }
+.profile-sidebar button{
+  color: white;
+}
 
 .profile-avatar {
   width: 72px;
@@ -102,7 +105,7 @@
   border: none;
   border-radius: 10px;
   background: transparent;
-  color: var(--muted);
+  color: white;
   font-size: 0.88rem;
   font-weight: 500;
   cursor: pointer;
@@ -120,7 +123,7 @@
   background: transparent;
   border: 1px solid var(--card-border);
   border-radius: 10px;
-  color: var(--muted);
+  
   font-size: 0.88rem;
   font-weight: 600;
   cursor: pointer;
@@ -155,7 +158,7 @@
 }
 
 .section-sub {
-  color: var(--muted);
+  color: white;
   font-size: 0.88rem;
   margin-bottom: 1.75rem;
 }
@@ -217,6 +220,7 @@
   box-sizing: border-box;
   width: 100%;
 }
+
 
 .form-field input:focus { border-color: var(--accent); }
 .form-field input:disabled { opacity: 0.5; cursor: not-allowed; }
@@ -292,6 +296,7 @@
   }
 
   .profile-sidebar {
+    
     width: 90%;
     position: static;
   }
@@ -352,7 +357,7 @@
   background: transparent;
   border: 1px solid var(--card-border);
   border-radius: 10px;
-  color: var(--muted);
+  color: white;
   font-size: 0.92rem;
   font-weight: 600;
   cursor: pointer;
@@ -397,6 +402,9 @@
 
 .form-field textarea:focus { border-color: var(--accent); }
 .form-field textarea::placeholder { color: var(--muted); }
+.form-field input::placeholder{
+  color: var(--muted);
+}
 
 /* Empty state */
 .dogs-empty {
@@ -447,7 +455,7 @@
 
 .dog-breed {
   font-size: 0.85rem;
-  color: var(--muted);
+  color: white;
   margin-bottom: 0.5rem;
 }
 

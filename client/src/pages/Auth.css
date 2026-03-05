@@ -58,7 +58,7 @@
 }
 
 .auth-sub {
-  color: var(--muted);
+  color: white;
   font-size: 0.88rem;
   margin-bottom: 1.5rem;
   line-height: 1.5;
@@ -131,7 +131,7 @@
 }
 
 .auth-field input::placeholder {
-  color: var(--text);
+  color: var(--muted);
 }
 
 /* Submit */
@@ -157,7 +157,7 @@
   text-align: center;
   margin-top: 1.25rem;
   font-size: 0.85rem;
-  color: var(--muted);
+  color: white;
 }
 
 .auth-switch span {

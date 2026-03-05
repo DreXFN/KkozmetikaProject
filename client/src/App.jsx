@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route,useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -10,6 +10,26 @@ import './App.css';
  import Profile from './pages/Profile';
  import { Navigate } from 'react-router-dom';
 function App() {
+  function TitleUpdater() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const titles = {
+      '/':         'Kozmetika By Zsuzsi-Főoldal',
+      
+      '/booking':  'Kozmetika By Zsuzsi-Időpontfoglalás',
+      '/profile':  'Kozmetika By Zsuzsi-Profilom',
+      '/login':    'Kozmetika By Zsuzsi-Bejelentkezés',
+    };
+    document.title = titles[location.pathname] || 'Kozmetika By Zsuzsi';
+  }, [location]);
+
+  return null;
+}
+function ProtectedRoute({ children }) {
+  const token = localStorage.getItem('token');
+  return token ? children : <Navigate to="/login" />;
+}
   const [user, setUser] = useState(
   JSON.parse(localStorage.getItem('user')) || null
     );
@@ -36,6 +56,7 @@ function App() {
   }
   return (
     <BrowserRouter>
+       <TitleUpdater />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <div className="page-content">
         <Routes>
