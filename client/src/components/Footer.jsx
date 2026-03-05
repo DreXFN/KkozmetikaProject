@@ -36,7 +36,7 @@ function Footer() {
         <div className="footer-col">
           <h4>Közösségi média</h4>
           <a href="https://www.facebook.com/vecseskutyakozmetika" target="_blank" rel="noreferrer">Facebook</a>
-          <a href="https://www.instagram.com/zsuzsannadnk" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://www.instagram.com/kutyakozmetika_vecses/" target="_blank" rel="noreferrer">Instagram</a>
           <a href="https://www.tiktok.com/@zsuzsannadnk" target="_blank" rel="noreferrer">TikTok</a>
         </div>
 

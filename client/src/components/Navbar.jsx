@@ -29,8 +29,8 @@ function Navbar({ theme, toggleTheme }) {
 
       <div className="navbar-links">
         <Link to="/">Főoldal</Link>
-        
         <Link to="/booking">Időpontfoglalás</Link>
+         <Link to="/contact" className={location.pathname === '/contact' ? 'nav-active' : ''}>Kapcsolat</Link>
         <Link to={user ? '/profile' : '/login'}>
   {       user ? user.first_name : 'Profilom'}
         </Link>
@@ -44,9 +44,11 @@ function Navbar({ theme, toggleTheme }) {
           <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
             <Link to="/"        onClick={() => setMenuOpen(false)}>Főoldal</Link>
             <Link to="/booking"  onClick={() => setMenuOpen(false)}>Időpontfoglalás</Link>
+        <Link to="/contact" className={location.pathname === '/contact' ? 'nav-active' : ''} onClick={() => setMenuOpen(false)}>Kapcsolat</Link>
             <Link to={user ? '/profile' : '/login'} onClick={() => setMenuOpen(false)}>
                 {user ? user.first_name : 'Profilom'}
             </Link>
+            
           </div>
            {menuOpen && (
         <div

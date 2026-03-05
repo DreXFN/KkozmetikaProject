@@ -8,6 +8,7 @@ import Booking from './pages/Booking';
 import './App.css';
  import Auth from './pages/Auth';
  import Profile from './pages/Profile';
+ import Contact from './pages/Contact';
  import { Navigate } from 'react-router-dom';
 function App() {
   function TitleUpdater() {
@@ -16,7 +17,7 @@ function App() {
   useEffect(() => {
     const titles = {
       '/':         'Kozmetika By Zsuzsi-Főoldal',
-      
+       '/contact': 'Kkozmetika — Kapcsolat',
       '/booking':  'Kozmetika By Zsuzsi-Időpontfoglalás',
       '/profile':  'Kozmetika By Zsuzsi-Profilom',
       '/login':    'Kozmetika By Zsuzsi-Bejelentkezés',
@@ -65,6 +66,7 @@ function ProtectedRoute({ children }) {
          
          <Route path="/login"   element={<Auth />} />
          <Route path="/booking" element={<Booking />} />
+         <Route path="/contact" element={<Contact />} />
         <Route path="/profile" element={
           <ProtectedRoute>
             <Profile />
