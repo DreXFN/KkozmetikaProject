@@ -79,7 +79,7 @@
 
 .booking-step span {
   font-size: 0.72rem;
-  color: var(--muted);
+  color: white;
   font-weight: 500;
 }
 
@@ -128,7 +128,7 @@
 .booking-service-card.selected { border-color: var(--accent); background: var(--toggle-bg); }
 
 .bsc-name { font-weight: 600; color: white; }
-.bsc-meta { display: flex; gap: 1rem; font-size: 0.85rem; color: var(--muted); }
+.bsc-meta { display: flex; gap: 1rem; font-size: 0.85rem; color: white; }
 
 /* Dogs */
 .booking-dogs {
@@ -154,8 +154,8 @@
 .booking-dog-card.selected { border-color: var(--accent); background: var(--toggle-bg); }
 
 .bdc-icon { font-size: 1.75rem; }
-.bdc-name { font-weight: 600; color: var(--text); }
-.bdc-breed { font-size: 0.82rem; color: var(--muted); }
+.bdc-name { font-weight: 600; color: white; }
+.bdc-breed { font-size: 0.82rem; color: white; }
 
 /* Date */
 .form-field {
@@ -168,7 +168,7 @@
 .form-field label {
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--text);
+  color: white;
 }
 
 .form-field input,
@@ -177,7 +177,7 @@
   border: 1px solid var(--card-border);
   border-radius: 10px;
   background: var(--bg);
-  color: var(--text);
+  color: white;
   font-size: 0.92rem;
   outline: none;
   transition: border-color 0.2s;
@@ -206,7 +206,7 @@
   display: block;
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--text);
+  color: white;
   margin-bottom: 0.75rem;
 }
 
@@ -284,7 +284,7 @@
   border: 1px solid var(--card-border);
   border-radius: 10px;
   padding: 0.7rem;
-  color: var(--muted);
+  color: white;
   font-size: 0.88rem;
   font-weight: 600;
   cursor: pointer;
@@ -351,14 +351,14 @@
   border: 1px solid var(--card-border) !important;
   border-radius: 12px !important;
   background: var(--card-bg) !important;
-  color: var(--text) !important;
+  color: white !important;
   font-family: inherit !important;
   padding: 0.5rem;
   margin-bottom: 0.5rem;
 }
 
 .react-calendar__navigation button {
-  color: var(--text) !important;
+  color: white !important;
   font-size: 1rem !important;
   font-weight: 700 !important;
   background: none !important;
@@ -370,7 +370,7 @@
 }
 
 .react-calendar__month-view__weekdays {
-  color: var(--muted) !important;
+  color: white !important;
   font-size: 0.75rem !important;
   text-transform: uppercase !important;
 }
@@ -380,7 +380,7 @@
 }
 
 .react-calendar__tile {
-  color: var(--text) !important;
+  color: white !important;
   border-radius: 8px !important;
   padding: 0.6rem 0.4rem !important;
   font-size: 0.88rem !important;

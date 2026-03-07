@@ -272,7 +272,7 @@ useEffect(() => {
                 <strong>{form.date}</strong>
               </div>
               <div className="summary-row">
-                <span>Idő</span>
+                <span>Időpont</span>
                 <strong>{form.time}</strong>
               </div>
               <div className="summary-row">
