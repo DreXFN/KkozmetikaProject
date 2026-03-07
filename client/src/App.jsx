@@ -3,11 +3,11 @@ import { BrowserRouter, Routes, Route,useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import Services from './pages/Services';
-import Booking from './pages/Booking';
+// import Services from './pages/Services';
+// import Booking from './pages/Booking';
 import './App.css';
- import Auth from './pages/Auth';
- import Profile from './pages/Profile';
+//  import Auth from './pages/Auth';
+//  import Profile from './pages/Profile';
  import Contact from './pages/Contact';
  import { Navigate } from 'react-router-dom';
 function App() {
@@ -17,23 +17,23 @@ function App() {
   useEffect(() => {
     const titles = {
       '/':         'Kozmetika By Zsuzsi-Főoldal',
-       '/contact': 'Kkozmetika — Kapcsolat',
-      '/booking':  'Kozmetika By Zsuzsi-Időpontfoglalás',
-      '/profile':  'Kozmetika By Zsuzsi-Profilom',
-      '/login':    'Kozmetika By Zsuzsi-Bejelentkezés',
+       '/contact': 'Kozmetika By Zsuzsi — Kapcsolat',
+      // '/booking':  'Kozmetika By Zsuzsi-Időpontfoglalás',
+      // '/profile':  'Kozmetika By Zsuzsi-Profilom',
+      // '/login':    'Kozmetika By Zsuzsi-Bejelentkezés',
     };
     document.title = titles[location.pathname] || 'Kozmetika By Zsuzsi';
   }, [location]);
 
   return null;
 }
-function ProtectedRoute({ children }) {
-  const token = localStorage.getItem('token');
-  return token ? children : <Navigate to="/login" />;
-}
+// function ProtectedRoute({ children }) {
+//   const token = localStorage.getItem('token');
+//   return token ? children : <Navigate to="/login" />;
+// }
   const [user, setUser] = useState(
   JSON.parse(localStorage.getItem('user')) || null
-    );
+     );
   const [theme, setTheme] = useState(
   localStorage.getItem('theme') || 'light'
     );
@@ -51,10 +51,10 @@ function ProtectedRoute({ children }) {
   });
   <Navbar theme={theme} toggleTheme={toggleTheme} user={user} />
   };
-  function ProtectedRoute({ children }) {
-    const token = localStorage.getItem('token');
-    return token ? children : <Navigate to="/login" />;
-  }
+  // function ProtectedRoute({ children }) {
+  //   const token = localStorage.getItem('token');
+  //   return token ? children : <Navigate to="/login" />;
+  // }
   return (
     <BrowserRouter>
        <TitleUpdater />
@@ -62,16 +62,16 @@ function ProtectedRoute({ children }) {
       <div className="page-content">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
+          {/* <Route path="/services" element={<Services />} /> */}
          
-         <Route path="/login"   element={<Auth />} />
-         <Route path="/booking" element={<Booking />} />
+         {/* <Route path="/login"   element={<Auth />} />
+         <Route path="/booking" element={<Booking />} /> */}
          <Route path="/contact" element={<Contact />} />
-        <Route path="/profile" element={
+        {/* <Route path="/profile" element={
           <ProtectedRoute>
             <Profile />
           </ProtectedRoute>
-        } />
+        } /> */}
         </Routes>
       </div>
        <Footer />

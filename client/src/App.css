@@ -35,7 +35,6 @@
 /* Apply theme to the page */
 body {
   background: var(--bg);
-  color: var(--text);
   transition: background 0.3s, color 0.3s;
   margin: 0;
     padding: 0;
@@ -44,3 +43,4 @@ body {
 .page-content {
   padding-top: 10px; /* offset for fixed navbar */
 }
+

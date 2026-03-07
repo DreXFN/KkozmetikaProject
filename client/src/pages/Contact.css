@@ -1,7 +1,11 @@
 .contact-page {
   min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
   background: var(--bg);
   padding: 2rem;
+}
+[data-theme="dark"] .contact-map iframe {
+  filter: invert(90%) hue-rotate(180deg);
 }
 
 .contact-hero {
@@ -12,7 +16,7 @@
 .contact-hero h1 {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
-  color: rgba(53, 7, 75, 0.85);
+  color: rgba(99, 63, 116, 0.85);
   margin-bottom: 0.5rem;
   letter-spacing: -0.02em;
 }
