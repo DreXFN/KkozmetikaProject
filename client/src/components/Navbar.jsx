@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../assets/logo.jpg';
 
@@ -9,7 +9,11 @@ function Navbar({ theme, toggleTheme }) {
   const [hidden, setHidden]     = useState(false);
   const lastScrollY              = useRef(0);
   const location                 = useLocation();
-
+  const navigate = useNavigate();
+  const handleNavClick = () => {
+  setMenuOpen(false);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -31,21 +35,32 @@ function Navbar({ theme, toggleTheme }) {
           <span></span>
         </button>
   <div className="navbar-center">
-    <Link to="/" className="navbar-brand">
-      <img src={logo} alt="logo" className="navbar-logo" />
-      <span className="navbar-title">
-        Kutyakozmetika Vecsés
-        <small>by Danok Zsuzsanna</small>
-      </span>
-    </Link>
+  <div
+  className="navbar-brand"
+  onClick={() => {
+    if (window.location.pathname === '/') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/');
+    }
+  }}
+  style={{ cursor: 'pointer' }}
+>
+  <img src={logo} alt="logo" className="navbar-logo" />
+  <span className="navbar-title">
+    Kutyakozmetika Vecsés
+    <small>by Danok Zsuzsanna</small>
+  </span>
+</div>
+
   </div>
       
       </div>
 
       <div className="navbar-links">
-        <Link to="/" className={location.pathname === '/' ? 'nav-active' : ''}>Főoldal</Link>
-        <Link to="/gallery" className={location.pathname === '/gallery' ? 'nav-active' : ''}>Képgaléria</Link>
-        <Link to="/contact" className={location.pathname === '/contact' ? 'nav-active' : ''}>Kapcsolat</Link>
+        <Link to="/" onClick={handleNavClick} className={location.pathname === '/' ? 'nav-active' : ''}>Főoldal</Link>
+        <Link to="/gallery" onClick={handleNavClick} className={location.pathname === '/gallery' ? 'nav-active' : ''}>Képgaléria</Link>
+        <Link to="/contact" onClick={handleNavClick} className={location.pathname === '/contact' ? 'nav-active' : ''}>Kapcsolat</Link>
       </div>
 
       <div className="navbar-right">
@@ -58,10 +73,15 @@ function Navbar({ theme, toggleTheme }) {
         </button>
       </div>
 
-      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+      {/* <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
         <Link to="/" onClick={() => setMenuOpen(false)}>Főoldal</Link>
-        <Link to="/gallery" onClick={() => setMenuOpen(false)}>Képgaléria</Link>
+        <Link to="/gallery"  onClick={() => setMenuOpen(false)}>Képgaléria</Link>
         <Link to="/contact" onClick={() => setMenuOpen(false)}>Kapcsolat</Link>
+      </div> */}
+      <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+          <Link to="/" onClick={handleNavClick}>Főoldal</Link>
+          <Link to="/gallery" onClick={handleNavClick}>Képgaléria</Link>
+          <Link to="/contact" onClick={handleNavClick}>Kapcsolat</Link>
       </div>
 
       {menuOpen && (

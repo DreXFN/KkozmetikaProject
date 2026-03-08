@@ -12,6 +12,15 @@ import './App.css';
  import Contact from './pages/Contact';
  import { Navigate } from 'react-router-dom';
 function App() {
+  function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
+
+  return null;
+}
   function TitleUpdater() {
   const location = useLocation();
 
@@ -60,6 +69,7 @@ function App() {
   return (
     <BrowserRouter>
        <TitleUpdater />
+       <ScrollToTop />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <div className="page-content">
         <Routes>

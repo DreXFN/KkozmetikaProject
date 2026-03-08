@@ -9,8 +9,6 @@
   justify-content: space-between;
   padding: 0 2rem;
   z-index: 1001;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-bottom: none;
   background: var(--navbar-bg);
   transition: background 0.3s, border-color 0.3s;

@@ -3,6 +3,7 @@ import logo from '../assets/logo.jpg';
 import './Footer.css';
 
 function Footer() {
+  const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -18,13 +19,13 @@ function Footer() {
         {/* Navigation */}
         <div className="footer-col">
           <h4>Navigáció</h4>
-          <Link to="/">Főoldal</Link>
+          <Link to="/" onClick={scrollTop}>Főoldal</Link>
           {/* <Link to="/services">Szolgáltatások</Link>
           <Link to="/booking">Időpontfoglalás</Link>
           <Link to="/profile">Profilom</Link> */}
-          <Link to="/gallery">Képgaléria</Link>
+          <Link to="/gallery" onClick={scrollTop}>Képgaléria</Link>
 
-          <Link to="/contact">Kapcsolat</Link>
+          <Link to="/contact" onClick={scrollTop}>Kapcsolat</Link>
 
         </div>
 
