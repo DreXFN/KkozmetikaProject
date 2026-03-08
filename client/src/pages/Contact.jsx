@@ -44,8 +44,7 @@ function Contact() {
               <h3>Nyitvatartás</h3>
               <table className="hours-table">
                 <tbody>
-                  <tr><td>Hétfő – Szombat</td><td>8:00 – 19:00</td></tr>
-                  <tr><td>Vasárnap</td><td>Zárva</td></tr>
+                  <tr><td>Telefonos időpont egyeztetéssel, rugalmas időbeosztásban.</td></tr>
                 </tbody>
               </table>
             </div>
@@ -58,7 +57,6 @@ function Contact() {
               <div className="social-links">
                 <a href="https://www.facebook.com/vecseskutyakozmetika" target="_blank" rel="noreferrer">Facebook</a>
                 <a href="https://www.instagram.com/kutyakozmetika_vecses/" target="_blank" rel="noreferrer">Instagram</a>
-                <a href="https://tiktok.com" target="_blank" rel="noreferrer">TikTok</a>
               </div>
             </div>
           </div>

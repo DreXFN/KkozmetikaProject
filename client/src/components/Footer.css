@@ -31,6 +31,7 @@
 
 /* Columns */
 .footer-col {
+  text-align: center !important;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

@@ -48,7 +48,6 @@
   border-radius: 14px;
   padding: 1.25rem 1.5rem;
   display: flex;
-  align-items: flex-start;
   gap: 1rem;
   transition: box-shadow 0.2s;
 }
@@ -89,14 +88,14 @@
 }
 
 .hours-table td {
+  text-align: center !important; 
   padding: 0.2rem 0.75rem 0.2rem 0;
   color: white;
 }
 
 .hours-table td:last-child {
-  color: var(--accent);
+  color: white;
   font-weight: 600;
-  text-align: right;
 }
 
 /* Social links */

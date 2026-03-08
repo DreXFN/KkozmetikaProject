@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route,useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import Gallery from './pages/Gallery';
 // import Services from './pages/Services';
 // import Booking from './pages/Booking';
 import './App.css';
@@ -17,7 +18,8 @@ function App() {
   useEffect(() => {
     const titles = {
       '/':         'Kozmetika By Zsuzsi-Főoldal',
-       '/contact': 'Kozmetika By Zsuzsi — Kapcsolat',
+       '/contact': 'Kozmetika By Zsuzsi—Kapcsolat',
+       '/gallery': 'Kozmetika By Zsuzsi—Képgaléria',
       // '/booking':  'Kozmetika By Zsuzsi-Időpontfoglalás',
       // '/profile':  'Kozmetika By Zsuzsi-Profilom',
       // '/login':    'Kozmetika By Zsuzsi-Bejelentkezés',
@@ -66,7 +68,9 @@ function App() {
          
          {/* <Route path="/login"   element={<Auth />} />
          <Route path="/booking" element={<Booking />} /> */}
+         <Route path="/gallery" element={<Gallery />} />
          <Route path="/contact" element={<Contact />} />
+
         {/* <Route path="/profile" element={
           <ProtectedRoute>
             <Profile />
