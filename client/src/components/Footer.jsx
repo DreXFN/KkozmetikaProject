@@ -45,6 +45,7 @@ function Footer() {
         </div>
 
       </div>
+      <div className="footer-version">v1.1</div>
 
       <div className="footer-bottom">
         <p>© {new Date().getFullYear()} Kutyakozmetika Vecsés by Danok Zsuzsanna.<br></br> Minden jog fenntartva.</p>
