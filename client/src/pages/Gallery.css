@@ -44,7 +44,6 @@
   aspect-ratio: 1;
   cursor: pointer;
   background: var(--card-bg);
-  border: 1px solid var(--card-border);
 }
 
 .gallery-item img {

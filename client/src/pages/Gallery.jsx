@@ -55,7 +55,6 @@ function Gallery() {
           >
             <img src={img.url} alt={`Galéria ${i + 1}`} />
             <div className="gallery-overlay">
-              <span>🔍</span>
             </div>
           </div>
         ))}
