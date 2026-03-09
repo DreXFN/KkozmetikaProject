@@ -4,7 +4,12 @@ import './Gallery.css';
 function Gallery() {
   const [images, setImages]   = useState([]);
   const [loading, setLoading] = useState(true);
-  const [selected, setSelected] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+
+const openImage = (index) => setSelectedIndex(index);
+const closeImage = () => setSelectedIndex(null);
+const prevImage = (e) => { e.stopPropagation(); setSelectedIndex(i => (i - 1 + images.length) % images.length); };
+const nextImage = (e) => { e.stopPropagation(); setSelectedIndex(i => (i + 1) % images.length); };
 
   useEffect(() => {
     const folderId = import.meta.env.VITE_GOOGLE_DRIVE_FOLDER_ID;
@@ -47,29 +52,31 @@ function Gallery() {
       )}
 
       <div className="gallery-grid">
-        {images.map((img, i) => (
-          <div
-            key={img.id}
-            className="gallery-item"
-            onClick={() => setSelected(img)}
-          >
-            <img src={img.url} alt={`Galéria ${i + 1}`} />
-            <div className="gallery-overlay">
-            </div>
-          </div>
-        ))}
+     {images.map((img, i) => (
+  <div
+    key={img.id}
+    className="gallery-item"
+    onClick={() => openImage(i)}
+  >
+    <img src={img.url} alt={`Galéria ${i + 1}`} />
+    <div className="gallery-overlay"><span></span></div>
+  </div>
+))}
       </div>
 
-      {selected && (
-        <div className="gallery-lightbox" onClick={() => setSelected(null)}>
-          <button className="lightbox-close" onClick={() => setSelected(null)}>✕</button>
-          <img
-            src={selected.url}
-            alt="Nagy kép"
-            onClick={e => e.stopPropagation()}
-          />
-        </div>
-      )}
+       {selectedIndex !== null && (
+  <div className="gallery-lightbox" onClick={closeImage}>
+    <button className="lightbox-close" onClick={closeImage}>✕</button>
+    <button className="lightbox-arrow left" onClick={prevImage}>‹</button>
+    <img
+      src={images[selectedIndex].url}
+      alt="Nagy kép"
+      onClick={e => e.stopPropagation()}
+    />
+    <button className="lightbox-arrow right" onClick={nextImage}>›</button>
+    <div className="lightbox-counter">{selectedIndex + 1} / {images.length}</div>
+  </div>
+)}
     </div>
   );
 }
