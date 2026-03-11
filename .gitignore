@@ -1,3 +1,4 @@
 client/.env
 client/vite.config.js
 .vscode/settings.json
+server/index.js
