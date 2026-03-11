@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Gallery.css';
+import heroImage from '../assets/hero-crop.webp';
 
 function Gallery() {
   const [images, setImages]   = useState([]);
@@ -34,9 +35,12 @@ const nextImage = (e) => { e.stopPropagation(); setSelectedIndex(i => (i + 1) % 
 
   return (
     <div className="gallery-page">
-      <div className="gallery-hero">
-        <h1>Képgaléria</h1>
-        <p>Munkáim és szőrös vendégeim</p>
+            <div className="page-hero">
+            <img src={heroImage} alt="hero" />
+            <div className="page-hero-overlay">
+          <h1>Képgaléria</h1>
+          <p>Munkáim és szőrös vendégeim</p>
+        </div>
       </div>
 
       {loading && (

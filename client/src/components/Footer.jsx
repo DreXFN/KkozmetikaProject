@@ -6,18 +6,19 @@ function Footer() {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
   return (
     <footer className="footer">
+      
       <div className="footer-content">
+     
 
         {/* Brand */}
-        <div className="footer-brand">
-          <img src={logo} alt="logo" className="footer-logo" />
-          <p className="footer-tagline">
-            Szertettel várom a szépülni vágyó kutyusokat! 🐾
-          </p>
-        </div>
+        
 
         {/* Navigation */}
-        <div className="footer-col">
+       
+
+        {/* Contact */}
+    
+          <div className="footer-col">
           <h4>Navigáció</h4>
           <Link to="/" onClick={scrollTop}>Főoldal</Link>
           {/* <Link to="/services">Szolgáltatások</Link>
@@ -28,15 +29,18 @@ function Footer() {
           <Link to="/contact" onClick={scrollTop}>Kapcsolat</Link>
 
         </div>
-
-        {/* Contact */}
-        <div className="footer-col">
-          <h4>Elérhetőségek</h4>
-          <p>📍<a href="https://maps.app.goo.gl/kz4H2HX7g8h3PYTg6" target='_blank'>Miklós utca 6., Vecsés, 2220</a></p>
-          <p>📞 <a href="tel:+36307235630">+36 30 723 5630</a></p>
-          <p>🕐 Telefonos időpont egyeztetéssel, rugalmas időbeosztásban. </p>
+            <div className="footer-contact-center">
+          <p className="footer-phone"><a href='tel:+36307235630'>Tel. 06-30-723-5630</a></p>
+          <a
+            className="footer-address"
+            href="https://maps.app.goo.gl/kz4H2HX7g8h3PYTg6"
+            target="_blank"
+            rel="noreferrer"
+          >
+            2220 Vecsés Miklós utca 6.
+          </a>
+          <p className="footer-sub">Piactér mellet, Vecsés központjában.</p>
         </div>
-
         {/* Social */}
         <div className="footer-col">
           <h4>Közösségi média</h4>
@@ -45,7 +49,7 @@ function Footer() {
         </div>
 
       </div>
-      <div className="footer-version">v1.1</div>
+      <div className="footer-version">v1.2.1</div>
 
       <div className="footer-bottom">
         <p>© {new Date().getFullYear()} Kutyakozmetika Vecsés by Danok Zsuzsanna.<br></br> Minden jog fenntartva.</p>

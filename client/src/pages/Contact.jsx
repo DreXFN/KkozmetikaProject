@@ -1,12 +1,16 @@
 import './Contact.css';
+import heroImage from '../assets/hero-crop.webp';
 
 function Contact() {
   return (
     <div className="contact-page">
 
-      <div className="contact-hero">
-        <h1>Kapcsolat</h1>
-        <p>Örömmel várom kedvenceidet!</p>
+              <div className="page-hero">
+        <img src={heroImage} alt="hero" />
+        <div className="page-hero-overlay">
+          <h1>Kapcsolat</h1>
+          <p>Örömmel várom kedvenceidet!</p>
+        </div>
       </div>
 
       <div className="contact-content">
