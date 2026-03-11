@@ -19,7 +19,7 @@ function Contact() {
         <div className="contact-info">
 
           <div className="info-card">
-            <div className="info-icon">📍</div>
+            <div className="info-icon"></div>
             <div>
               <h3>Cím</h3>
               <p>2220 Vecsés,<br />Miklós utca 6</p>
@@ -27,26 +27,22 @@ function Contact() {
           </div>
 
           <div className="info-card">
-            <div className="info-icon">📞</div>
+            <div className="info-icon"></div>
             <div>
               <h3>Telefon</h3>
               <a href="tel:+36307235630">+36 30 723 5630</a>
             </div>
           </div>
           <div className="info-card">
-            <div className="info-icon">🕐</div>
+            <div className="info-icon"></div>
             <div>
               <h3>Nyitvatartás</h3>
-              <table className="hours-table">
-                <tbody>
-                  <tr><td>Telefonos időpont egyeztetéssel, rugalmas időbeosztásban.</td></tr>
-                </tbody>
-              </table>
+              <p>Telefonos időpont egyeztetéssel, rugalmas időbeosztásban.</p>
+          
             </div>
           </div>
 
           <div className="info-card">
-            <div className="info-icon">📱</div>
             <div>
               <h3>Kövess!</h3>
               <div className="social-links">

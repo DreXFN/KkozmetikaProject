@@ -19,6 +19,7 @@
   gap: 0.75rem;
 }
 
+
 .navbar-logo {
   position: fixed;
   top: 10px;
@@ -218,7 +219,7 @@
 .theme-toggle:hover { transform: scale(1.1); }
 
 /* Mobile hamburger — hidden on desktop */
-@media (max-width: 700px) {
+@media (max-width: 900px) {
     .navbar {
     padding: 0 1rem;
   
@@ -242,36 +243,34 @@
     min-width: 32px;
   }
 
-  .navbar-brand {
+  .navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
 
   .navbar-logo {
-    position: fixed;
-    top: 16px;
-    left: 110px;
+    position: static;
     height: 32px;
     width: 32px;
     object-fit: cover;
   }
 
   .navbar-title {
-    position: fixed;
-    left: 145px;
-    top: 20px;
-    display: block;
+    position: static;
     font-size: 0.75rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    min-width: 0;
   }
 
   .navbar-title small {
     font-size: 0.62rem;
   }
+
 
   .navbar-links {
     display: none;
