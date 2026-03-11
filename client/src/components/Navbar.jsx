@@ -35,23 +35,23 @@ function Navbar({ theme, toggleTheme }) {
           <span></span>
         </button>
   <div className="navbar-center">
-  <div
-  className="navbar-brand"
-  onClick={() => {
-    if (window.location.pathname === '/') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      navigate('/');
-    }
-  }}
-  style={{ cursor: 'pointer' }}
->
-  <img src={logo} alt="logo" className="navbar-logo" />
-  <span className="navbar-title">
-    Kutyakozmetika Vecsés
-    <small>by Danok Zsuzsanna</small>
-  </span>
-</div>
+    <div
+            className="navbar-brand"
+            onClick={() => {
+            if (window.location.pathname === '/') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                navigate('/');
+            }
+            }}
+          style={{ cursor: 'pointer' }}
+        >
+        <img src={logo} alt="logo" className="navbar-logo" />
+        <span className="navbar-title">
+          Kutyakozmetika Vecsés
+        <small>by Danok Zsuzsanna</small>
+      </span>
+    </div>
 
   </div>
       
@@ -72,12 +72,6 @@ function Navbar({ theme, toggleTheme }) {
           )}
         </button>
       </div>
-
-      {/* <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
-        <Link to="/" onClick={() => setMenuOpen(false)}>Főoldal</Link>
-        <Link to="/gallery"  onClick={() => setMenuOpen(false)}>Képgaléria</Link>
-        <Link to="/contact" onClick={() => setMenuOpen(false)}>Kapcsolat</Link>
-      </div> */}
       <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
           <Link to="/" onClick={handleNavClick}>Főoldal</Link>
           <Link to="/gallery" onClick={handleNavClick}>Képgaléria</Link>

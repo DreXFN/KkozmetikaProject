@@ -10,15 +10,11 @@ function Footer() {
       <div className="footer-content">
      
 
-        {/* Brand */}
+        
         
 
         {/* Navigation */}
-       
-
-        {/* Contact */}
-    
-          <div className="footer-col">
+            <div className="footer-col">
           <h4>Navigáció</h4>
           <Link to="/" onClick={scrollTop}>Főoldal</Link>
           {/* <Link to="/services">Szolgáltatások</Link>
@@ -29,7 +25,10 @@ function Footer() {
           <Link to="/contact" onClick={scrollTop}>Kapcsolat</Link>
 
         </div>
-            <div className="footer-contact-center">
+       
+
+        {/* Contact */}
+        <div className="footer-contact-center">
           <p className="footer-phone"><a href='tel:+36307235630'>Tel. 06-30-723-5630</a></p>
           <a
             className="footer-address"

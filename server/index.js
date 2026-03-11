@@ -11,11 +11,6 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({ origin: 'http://192.168.1.4:5173' }));
 app.use(express.json());
 
-// Health check
-app.get('/api/health', (req, res) => {
-  res.json({ status: '🐾 Pawlish server is running!' });
-});
-
 // Test DB — fetch all services
 app.get('/api/services', async (req, res) => {
   try {

@@ -3,10 +3,9 @@ import './Gallery.css';
 import heroImage from '../assets/hero-crop.webp';
 
 function Gallery() {
-  const [images, setImages]   = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedIndex, setSelectedIndex] = useState(null);
-
+const [images, setImages]   = useState([]);
+const [loading, setLoading] = useState(true);
+const [selectedIndex, setSelectedIndex] = useState(null);
 const openImage = (index) => setSelectedIndex(index);
 const closeImage = () => setSelectedIndex(null);
 const prevImage = (e) => { e.stopPropagation(); setSelectedIndex(i => (i - 1 + images.length) % images.length); };

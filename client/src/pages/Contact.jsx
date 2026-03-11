@@ -33,15 +33,6 @@ function Contact() {
               <a href="tel:+36307235630">+36 30 723 5630</a>
             </div>
           </div>
-
-          {/* <div className="info-card">
-            <div className="info-icon">✉️</div>
-            <div>
-              <h3>Email</h3>
-              <a href="mailto:hello@kkozmetika.hu">hello@kkozmetika.hu</a>
-            </div>
-          </div> */}
-
           <div className="info-card">
             <div className="info-icon">🕐</div>
             <div>

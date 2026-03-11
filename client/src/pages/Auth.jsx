@@ -74,8 +74,6 @@ function Auth() {
     <div className="auth-page">
 
       <div className="auth-card">
-        
-
 
         {/* Toggle */}
         <div className="auth-toggle">
@@ -100,11 +98,11 @@ function Auth() {
             : 'Regisztrálj hogy időpontot foglalhass és/vagy menedzseld kutyusaidat!'}
         </p>
 
-        {/* Error / Success */}
+        
         {error   && <div className="auth-error">{error}</div>}
         {success && <div className="auth-success">{success}</div>}
 
-        {/* Form */}
+        
         <div className="auth-form">
 
           {/* Register only fields */}
