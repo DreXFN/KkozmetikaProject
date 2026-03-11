@@ -8,11 +8,6 @@ function Footer() {
     <footer className="footer">
       
       <div className="footer-content">
-     
-
-        
-        
-
         {/* Navigation */}
             <div className="footer-col">
           <h4>Navigáció</h4>
@@ -48,7 +43,7 @@ function Footer() {
         </div>
 
       </div>
-      <div className="footer-version">v1.2.1</div>
+      <div className="footer-version">v1.2.2 | Made by <a id='creator' href='https://github.com/DreXFN/KkozmetikaProject'>Danok Károly</a> </div>
 
       <div className="footer-bottom">
         <p>© {new Date().getFullYear()} Kutyakozmetika Vecsés by Danok Zsuzsanna.<br></br> Minden jog fenntartva.</p>
